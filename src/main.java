@@ -20,7 +20,9 @@ import org.apache.hc.core5.util.Timeout;
 
 public class main {
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args)
+	{
+		
 		final HttpRequester httpRequester = RequesterBootstrap.bootstrap()
                 .setStreamListener(new Http1StreamListener() {
 
@@ -61,6 +63,10 @@ public class main {
                 System.out.println(requestUri + "->" + response.getCode());
                 System.out.println(EntityUtils.toString(response.getEntity()));
                 System.out.println("==============");
+            }
+            catch(Exception e) 
+            {
+            	
             }
         }
 	}
