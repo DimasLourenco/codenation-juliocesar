@@ -5,6 +5,8 @@ import java.util.Formatter;
 public class cifra 
 {
 
+	private static final String CIFRA_DEBUG = "[[cifra]] ";
+	
 	public static String cifraCesar(int chave, String msg) 
 	{
 		byte charCifrado;
@@ -12,8 +14,13 @@ public class cifra
 		
 		StringBuilder stringCifrada = new StringBuilder();
 		
+		System.out.println(CIFRA_DEBUG + "Msg p/ cifrar: " + msg);
+		System.out.println(CIFRA_DEBUG + "Deslocamento: " + chave);
+		
 		for (byte c : msgCifrada) 
 		{
+			charCifrado = c;
+			
 			// Garantindo que vamos cifrar somente letras, ignorando caracteres de pontuação e algarismos
 			if( ( (c >= 'a') && (c <= 'z') ) )
 			{
@@ -23,40 +30,47 @@ public class cifra
 				if(charCifrado > 'z') 
 				{
 					charCifrado -= 26;
-				}
-				
-				stringCifrada.append((char) charCifrado);
+				}				
 			}
+			
+			stringCifrada.append((char) charCifrado);
 		}
-		
+
+		System.out.println(CIFRA_DEBUG + "Cifrei: " + stringCifrada.toString());
 		return stringCifrada.toString();
 	}
 	
 	public static String decifraCesar(int chave, String msg) 
 	{
 
-		byte charCifrado;
+		byte charDecifrado;
 		byte[] msgDecifrada = msg.toLowerCase().getBytes();
 		
 		StringBuilder stringDecifrada = new StringBuilder();
+
+		System.out.println(CIFRA_DEBUG + "Msg p/ decifrar: " + msg);
+		System.out.println(CIFRA_DEBUG + "Deslocamento: " + chave);
 		
 		for (byte c : msgDecifrada) 
 		{
+			charDecifrado = c;
+			
 			// Garantindo que vamos cifrar somente letras, ignorando caracteres de pontuação e algarismos
 			if( ( (c >= 'a') && (c <= 'z') ) )
 			{
-				charCifrado = (byte) (c - chave);
+				charDecifrado = (byte) (c - chave);
 				
 				// Circulando: se o byte c == 'b', chave == 4, charCifrado == 'x'.
-				if(charCifrado < 'a') 
+				if(charDecifrado < 'a') 
 				{
-					charCifrado += 26;
-				}
-				
-				stringDecifrada.append((char) charCifrado);
+					charDecifrado += 26;
+				}				
 			}
+			
+			stringDecifrada.append((char) charDecifrado);
 		}
-		
+
+		System.out.println(CIFRA_DEBUG + "Decifrei: " + stringDecifrada.toString());
 		return stringDecifrada.toString();
 	}
 	
@@ -66,6 +80,8 @@ public class cifra
 		String stringHash;
 		
 		Formatter formatter = new Formatter();
+
+		System.out.println(CIFRA_DEBUG + "Msg p/ calcular hash: " + toHash);
 		
 		try 
 		{
@@ -85,7 +101,8 @@ public class cifra
         
         stringHash = formatter.toString();
         formatter.close();
-         
+
+		System.out.println(CIFRA_DEBUG + "Hash calculado: " + stringHash);
         return stringHash;
 	}
 	

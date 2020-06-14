@@ -14,6 +14,7 @@ import org.json.JSONObject;
 public class manipulacaoJson 
 {
 
+	private static final String JSON_DEBUG = "[[manipulacaoJson]] ";
 	/**
 	 *   Retorna o valor para a tag "numero_casas",
 	 * contendo a qtde. de casas para ser utilizada
@@ -31,19 +32,20 @@ public class manipulacaoJson
 		try 
 		{
 			numeroCasas = jo.getInt("numero_casas");
+			System.out.println(JSON_DEBUG + "numero_casas == " + numeroCasas);
 		}
 		// Segundo a documentação da api, JSONException será lançada quando o valor da tag não for um int...
 		catch(JSONException typeEx) 
 		{
-			System.out.println("Erro: a tag \"numero_casas\" não possui um valor do tipo int!");
-			System.out.println("\nMensagem de erro:" + typeEx.getMessage());
+			System.out.println(JSON_DEBUG + "Erro: a tag \"numero_casas\" não possui um valor do tipo int!");
+			System.out.println(JSON_DEBUG + "\nMensagem de erro:" + typeEx.getMessage());
 			return 0;
 		}
 		// ...para os outros casos (que talvez não ocorram), deixamos esse catch "default"
 		catch(Exception ex) 
 		{
-			System.out.println("Erro ao tentar ler a tag \"numero_casas\"!");
-			System.out.println("\nMensagem de erro:" + ex.getMessage());
+			System.out.println(JSON_DEBUG + "Erro ao tentar ler a tag \"numero_casas\"!");
+			System.out.println(JSON_DEBUG + "\nMensagem de erro:" + ex.getMessage());
 			return 0;
 		}
 		
@@ -67,19 +69,20 @@ public class manipulacaoJson
 		try 
 		{
 			textoParaDecifrar = jo.getString("cifrado");
+			System.out.println(JSON_DEBUG + "cifrado == " + textoParaDecifrar);
 		}
 		// Segundo a documentação da api, JSONException será lançada quando o valor da tag não for uma String...
 		catch(JSONException typeEx) 
 		{
-			System.out.println("Erro: a tag \"cifrado\" não possui um valor do tipo String!");
-			System.out.println("\nMensagem de erro:" + typeEx.getMessage());
+			System.out.println(JSON_DEBUG + "Erro: a tag \"cifrado\" não possui um valor do tipo String!");
+			System.out.println(JSON_DEBUG + "\nMensagem de erro:" + typeEx.getMessage());
 			return "";
 		}
 		// ...para os outros casos (que talvez não ocorram), deixamos esse catch "default"
 		catch(Exception ex) 
 		{
-			System.out.println("Erro ao tentar ler a tag \"cifrado\"!");
-			System.out.println("\nMensagem de erro:" + ex.getMessage());
+			System.out.println(JSON_DEBUG + "Erro ao tentar ler a tag \"cifrado\"!");
+			System.out.println(JSON_DEBUG + "\nMensagem de erro:" + ex.getMessage());
 			return "";
 		}
 		
@@ -103,19 +106,20 @@ public class manipulacaoJson
 		try 
 		{
 			token = jo.getString("token");
+			System.out.println(JSON_DEBUG + "token == " + token);
 		}
 		// Segundo a documentação da api, JSONException será lançada quando o valor da tag não for uma String...
 		catch(JSONException typeEx) 
 		{
-			System.out.println("Erro: a tag \"token\" não possui um valor do tipo String!");
-			System.out.println("\nMensagem de erro:" + typeEx.getMessage());
+			System.out.println(JSON_DEBUG + "Erro: a tag \"token\" não possui um valor do tipo String!");
+			System.out.println(JSON_DEBUG + "\nMensagem de erro:" + typeEx.getMessage());
 			return "";
 		}
 		// ...para os outros casos (que talvez não ocorram), deixamos esse catch "default"
 		catch(Exception ex) 
 		{
-			System.out.println("Erro ao tentar ler a tag \"token\"!");
-			System.out.println("\nMensagem de erro:" + ex.getMessage());
+			System.out.println(JSON_DEBUG + "Erro ao tentar ler a tag \"token\"!");
+			System.out.println(JSON_DEBUG + "\nMensagem de erro:" + ex.getMessage());
 			return "";
 		}
 		
@@ -141,11 +145,12 @@ public class manipulacaoJson
 		try 
 		{
 			newJo.put("decifrado", textoDecifrado);
+			System.out.println(JSON_DEBUG + "decifrado no json == " + newJo.getString("decifrado"));
 		}
 		catch(Exception ex) 
 		{
-			System.out.println("Erro ao tentar escrever o texto decifrado!");
-			System.out.println("\nMensagem de erro:" + ex.getMessage());
+			System.out.println(JSON_DEBUG + "Erro ao tentar escrever o texto decifrado!");
+			System.out.println(JSON_DEBUG + "\nMensagem de erro:" + ex.getMessage());
 			return null;
 		}
 		
@@ -171,11 +176,12 @@ public class manipulacaoJson
 		try 
 		{
 			newJo.put("resumo_criptografico", hash);
+			System.out.println(JSON_DEBUG + "resumo_criptografico no json == " + newJo.getString("resumo_criptografico"));
 		}
 		catch(Exception ex) 
 		{
-			System.out.println("Erro ao tentar escrever o hash!");
-			System.out.println("\nMensagem de erro:" + ex.getMessage());
+			System.out.println(JSON_DEBUG + "Erro ao tentar escrever o hash!");
+			System.out.println(JSON_DEBUG + "\nMensagem de erro:" + ex.getMessage());
 			return null;
 		}
 		
