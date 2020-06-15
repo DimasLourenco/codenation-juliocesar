@@ -17,6 +17,7 @@ public class main {
 		String textoDecifrado;
 		String sha1;
 		String respostaHttpGet;
+		String respostaHttpPost;
 		
 		int chave;
 		
@@ -69,9 +70,8 @@ public class main {
 			System.out.println("ERRO: Falha na escrita do json em arquivo!");
 		}
 
-		// Mágica para
-		// POST multipart
-
+		respostaHttpPost = httpHandler.PostRequest();
+		System.out.println("Resposta ao POST: " + respostaHttpPost);
 
 		inputScan.close();
 				
